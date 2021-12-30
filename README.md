@@ -1,82 +1,75 @@
 # The Conch - Web API Documentation
 
-This documentation is made to help understand The Conch's Web API.
+Theo Xiong, Oliver Moscow
 ```
 Base URL > https://www.sch.codes/api
 ```
-## /sendaudio
+## datatype [user]
 ```
-Description > Use this endpoint to send audio chunk to a user's .
-Methods > POST, PUT
+Params:
+	spotify_email
+	username
+	user_stations
 ```
+## datatype [station]
 ```
-Usage > https://www.sch.codes/api/sendaudio/<key>/<username>/<audiofile>
-	key --> API Key
-	username --> Username
-	audiofile --> Audio File
+Params:
+	station_id
+	station_name
+	muxplayback_id
+	muxstream_id
 ```
-## /getaudiolist
+## endpoint [/new_user]
 ```
-Description > Use this endpoint to retrieve all audios of a user.
-Methods > GET
-```
-```
-Usage > https://www.sch.codes/api/getaudiolist/<key>/<username>/
-	key --> API Key
-	username --> Username
-```
-## /getallusers
-```
-Description > Use this endpoint to retrieve id of all users.
-Methods > GET
-```
-```
-Usage > https://www.sch.codes/api/getallusers/<key>/
-	key --> API Key
-```
-## /getuser
-```
-Description > Use this endpoint to retrieve user information.
-Methods > POST, GET
-```
-```
-Usage > https://www.sch.codes/api/getuser/<key>/<username>
-	key --> API Key
-	username --> Username
-```
-~~## /addtolist~~
-```
-Description > Use this endpoint to add track to user playlist.
 Methods > POST
+Request Params >
+	api_key[str]
+	spotify_email[str]
+	username[str] : letters and numbers only, no spaces or special characters
+Return Params > 
+	status[str]
 ```
 ```
-Usage > https://www.sch.codes/api/addtolist/<key>/<username>/<track>
-	key --> API Key
-	username --> Username
-	track --> Title of track
+Example > curl https://www.sch.codes/api/new_user?api_key=key&spotify_email=johndoe%40gmail.com&username=johndoe123
 ```
-## Errors
+## endpoint [/get_user_stations]
 ```
-{'Error' : 'null key'}
-{'Error' : 'null username'}
-{'Error' : 'Song exists in playlist.'}
+Methods > POST, GET
+Request Params >
+	api_key[str]
+	spotify_email[str]
+Return Params > 
+	user_stations[list]
 ```
-## User Data Structure
 ```
-{
-	'Username' : 'username<str>',
-	'FullName' : 'fullname<str>',
-	'Stations' : 'stations<list>',
-	'FollowingStations' : 'followingstations<list>',
-	'SignupDate' : 'signupdate<str>',
-}
+Example > https://www.sch.codes/api/get_user_stations?api_key=key&spotify_email=johndoe%40gmail.com
 ```
-## Radio Station Data Structure
+## endpoint [/create_station]
 ```
-{
-	'StationID' : 'stationid<str>',
-	'StationName' : 'stationname<str>',
-	'Playlist' : 'playlist<url>',
-	'FollowsCount' : 'followscount<int>'
-}
+Methods > POST
+Request Params >
+	api_key[str]
+	spotify_email[str]
+	station_name[str]
+	muxplayback_id[str]
+	muxstream_id[str]
+Return Params > 
+	stationid[num] or error[str]
+```
+```
+Example > https://www.sch.codes/api/create_station?api_key=key&spotify_email=johndoe%40gmail.com&station_name=Country+Poppin&muxplayback_id=sampleid&muxstream_id=sampleid
+```
+## endpoint [/get_station_info]
+```
+Methods > POST, GET
+Request Params >
+	api_key[str]
+	station_id[int]
+Return Params > 
+	{station_name[str],
+	muxplayback_id[str],
+	muxstream_id[str]}
+```
+```
+Example > https://www.sch.codes/api/get_station_info?api_key=key&station_id=543213213
 ```
