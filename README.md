@@ -1,6 +1,5 @@
 # The Conch - Web API Documentation
 
-Theo Xiong, Oliver Moscow
 ```
 Base URL > https://www.sch.codes/api
 ```
@@ -30,19 +29,7 @@ Return Params >
 	status[str]
 ```
 ```
-Example > curl https://www.sch.codes/api/new_user?api_key=key&spotify_email=johndoe%40gmail.com&username=johndoe123
-```
-## endpoint [/get_user_stations]
-```
-Methods > POST, GET
-Request Params >
-	api_key[str]
-	spotify_email[str]
-Return Params > 
-	user_stations[list]
-```
-```
-Example > https://www.sch.codes/api/get_user_stations?api_key=key&spotify_email=johndoe%40gmail.com
+Example > curl https://www.sch.codes/api/new_user?api_key=key&spotify_email=john_doe%40gmail.com&username=johndoe123
 ```
 ## endpoint [/create_station]
 ```
@@ -57,7 +44,19 @@ Return Params >
 	stationid[num] or error[str]
 ```
 ```
-Example > https://www.sch.codes/api/create_station?api_key=key&spotify_email=johndoe%40gmail.com&station_name=Country+Poppin&muxplayback_id=sampleid&muxstream_id=sampleid
+Example > https://www.sch.codes/api/create_station?api_key=key&spotify_email=john_doe%40gmail.com&station_name=Country+Poppin&muxplayback_id=sampleid&muxstream_id=sampleid
+```
+## (broken) endpoint [/get_user_stations]
+```
+Methods > POST, GET
+Request Params >
+	api_key[str]
+	spotify_email[str]
+Return Params > 
+	user_stations[list]
+```
+```
+Example > https://www.sch.codes/api/get_user_stations?api_key=key&spotify_email=john_doe%40gmail.com
 ```
 ## endpoint [/get_station_info]
 ```
